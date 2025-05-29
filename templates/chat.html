@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Talk It Out- Your Virtual Companion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #313b57;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #d5d6da; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links li a {
+      color: #ddd; text-decoration: none; font-weight: 500;
+    }
+    .nav-links li a:hover { color: #7b61ff; }
+    .hamburger { font-size: 2rem; color: #d5d6da; display: none; cursor: pointer; }
+    .sidebar {
+      position: fixed; top: 0; right: -300px; height: 100%; width: 250px;
+      background-color: #1c1c1c; display: flex; flex-direction: column;
+      padding: 2rem; gap: 1.5rem; transition: right 0.3s ease-in-out; z-index: 200;
+    }
+    .sidebar.open { right: 0; }
+    .sidebar a {
+      color: #ddd; text-decoration: none; font-size: 1.2rem;
+    }
+    .sidebar a:hover { color: #7b61ff; }
+    .close-btn {
+      font-size: 1.8rem; color: #fff; align-self: flex-end; cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+    .chat-container {
+      width: 100%; max-width: 1000px; height: 100%;
+      background-color: #1a1a1a; border-radius: 12px;
+      display: flex; flex-direction: column; overflow: hidden; margin-top: 10px;
+    }
+    .chat-header {
+      background-color: #313b57; padding: 1rem; color: #d5d6da;
+      font-weight: bold; font-size: 1.2rem; text-align: center;
+    }
+    .chat-messages {
+      flex: 1; padding: 1rem; overflow-y: auto; display: flex;
+      flex-direction: column; gap: 0.75rem;
+    }
+    .message {
+      padding: 0.75rem 1rem; border-radius: 12px; max-width: 75%;
+      font-size: 0.95rem; line-height: 1.4;
+    }
+    .user { background-color: #313b57; color: #d5d6da; align-self: flex-end; }
+    .bot { background-color: #3c414e7e; color: #d5d6da; align-self: flex-start; }
+    .chat-input {
+      display: flex; align-items: center; gap: 0.5rem;
+      border-top: 1px solid #333; background-color: #121212; padding: 0.5rem;
+    }
+    .chat-input input {
+      flex: 1; padding: 1rem; border: none; background: transparent;
+      color: #f3f3f3; font-size: 1rem; outline: none;
+    }
+    .chat-input button {
+      background-color: #313b57; border: none; color: #d5d6da;
+      font-weight: bold; padding: 0.8rem 1.2rem; border-radius: 8px;
+      cursor: pointer; transition: background 0.3s ease;
+    }
+    .chat-input button:hover { background-color: #3b3d3d; }
+    select {
+      background-color: #121212; color: #f3f3f3; border: 1px solid #333;
+      padding: 0.5rem; border-radius: 8px; margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"> 🧠 T I O Mental AI</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./game.html">Game</a></li>
+      <li><a href="./sound.html">Sound Lounge</a></li>
+      <li><a href="./resources.html">Resources</a></li>
+      <li><a href="./community.html">Community</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </nav>
+
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <a href="./index.html">Home</a>
+    <a href="./chat.html">Chat</a>
+    <a href="./sound.html">Sound Lounge</a>
+    <a href="./resources.html">Resources</a>
+    <a href="./community.html">Community</a>
+  </div>
+
+  <div class="chat-container" id="chat">
+    <div class="chat-header"> 🧠 T I O - Talk It Out</div>
+    <div class="chat-messages" id="chatbox">
+      <div class="message bot">Hi! I’m here to listen. How are you feeling today?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type or speak..." />
+      <button onclick="startListening()">🎙️</button>
+      <button onclick="send()">Send</button>
+      <select id="modelSelect">
+        <option value="openai/gpt-3.5-turbo">GPT-3.5 Turbo</option>
+        <option value="openai/gpt-4">GPT-4</option>
+        <option value="mistralai/mixtral-8x7b">Mixtral</option>
+        <option value="anthropic/claude-2">Claude-2</option>
+      </select>
+    </div>
+  </div>
+
+
+ <script>
+  function send() {
+    const input = document.getElementById("userInput").value.trim();
+    const model = document.getElementById("modelSelect").value;
+    const chat = document.getElementById("chatbox");
+    if (!input) return;
+
+    const instruction = "Respond without repeating the user's name unless it's relevant. ";
+    const fullInput = instruction + input;
+
+    // Append user message
+    chat.innerHTML += `<div class="message user">${input}</div>`;
+
+    fetch("/get", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ msg: input, model: model })
+    })
+    .then(res => res.text()) // Get raw response as text
+    .then(text => {
+      console.log("Response from server:", text); // Debug output
+      let data;
+      try {
+        data = JSON.parse(text);  // Parse JSON if possible
+      } catch (e) {
+        console.error("Failed to parse JSON:", e);
+        data = { reply: "Sorry, I couldn't understand the response." }; // Fallback message
+      }
+      const reply = data.reply || data.message || data; // Handle different possible response formats
+      chat.innerHTML += `<div class="message bot">${reply}</div>`;
+      document.getElementById("userInput").value = "";
+      chat.scrollTop = chat.scrollHeight;
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      // Optional: Show a user-friendly message
+      chat.innerHTML += `<div class="message bot">Sorry, there was an error processing your request.</div>`;
+      document.getElementById("userInput").value = "";
+    });
+  }
+
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.start();
+    recognition.onresult = function (event) {
+      const text = event.results[0][0].transcript;
+      document.getElementById("userInput").value = text;
+      send();
+    };
+  }
+
+  document.getElementById("userInput").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") send();
+  });
+
+  // Sidebar toggle
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const closeBtn = document.getElementById("closeBtn");
+
+  hamburger.addEventListener("click", () => sidebar.classList.add("open"));
+  closeBtn.addEventListener("click", () => sidebar.classList.remove("open"));
+</script>
+</body>
+</html>
