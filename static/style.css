@@ -94,7 +94,7 @@
   }
   
   /* Responsive Styles */
-  @media (max-width: 768px) {
+  @media (max-width: 868px) {
     .nav-links {
       display: none;
     }
@@ -254,7 +254,7 @@ body {
     line-height: 1.5;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 868px) {
     .feature {
       width: 100%;
     }
@@ -319,7 +319,7 @@ body {
     align-self: flex-end;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 868px) {
     .demo-section h2 {
       font-size: 2rem;
     }
@@ -397,7 +397,7 @@ body {
     background-color: #2a2a2a;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .sound-lounge h2 {
       font-size: 2rem;
     }
@@ -473,7 +473,7 @@ body {
     color: rgb(160, 153, 153);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .resources-section h2 {
       font-size: 2rem;
     }
@@ -556,7 +556,7 @@ body {
     font-size: 0.85rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .community-voices h2 {
       font-size: 2rem;
     }
