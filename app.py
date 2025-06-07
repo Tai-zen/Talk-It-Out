@@ -83,9 +83,9 @@ def Resources():
 def Sound_lounge():
     return render_template("sound.html")
 
-@app.route("/game.html")
-def Game():
-    return render_template("game.html")
+# @app.route("/game.html")
+# def Game():
+#     return render_template("game.html")
 
 @app.route("/into.html")
 def How():

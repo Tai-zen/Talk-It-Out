@@ -96,7 +96,7 @@
     <div class="logo"> 🧠 T I O Mental AI</div>
     <ul class="nav-links" id="navLinks">
       <li><a href="./index.html">Home</a></li>
-      <li><a href="./game.html">Game</a></li>
+      <!-- <li><a href="./game.html">Game</a></li> -->
       <li><a href="./sound.html">Sound Lounge</a></li>
       <li><a href="./resources.html">Resources</a></li>
       <li><a href="./community.html">Community</a></li>
@@ -150,17 +150,17 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ msg: input, model: model })
     })
-    .then(res => res.text()) // Get raw response as text
+    .then(res => res.text()) 
     .then(text => {
       console.log("Response from server:", text); // Debug output
       let data;
       try {
-        data = JSON.parse(text);  // Parse JSON if possible
+        data = JSON.parse(text);  
       } catch (e) {
         console.error("Failed to parse JSON:", e);
         data = { reply: "Sorry, I couldn't understand the response." }; // Fallback message
       }
-      const reply = data.reply || data.message || data; // Handle different possible response formats
+      const reply = data.reply || data.message || data; 
       chat.innerHTML += `<div class="message bot">${reply}</div>`;
       document.getElementById("userInput").value = "";
       chat.scrollTop = chat.scrollHeight;
