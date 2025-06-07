@@ -23,27 +23,27 @@ Talk It Out is an innovative mental health chatbot designed specifically for stu
 
 ## Installation Guide
 
-###1. Clone the repository
+Clone the repository
 
-1. git clone https://github.com/your-username/Talk-It-Out.git
-cd Talk-It-Out
+  git clone https://github.com/your-username/Talk-It-Out.git
+  cd Talk-It-Out
 
-2. Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate , On Windows use: venv\Scripts\activate
+Create and activate a virtual environment
+  python -m venv venv
+  source venv/bin/activate , On Windows use: venv\Scripts\activate
 
-3. Install dependencies
-pip install -r requirements.txt
+Install dependencies
+  pip install -r requirements.txt
 
-4. Set up environment variables
-Create a .env file in the project root with your OpenRouter API key:
-env
-OPENROUTER_API_KEY=your_api_key_here
+Set up environment variables
+  Create a .env file in the project root with your OpenRouter API key:
+  env
+  OPENROUTER_API_KEY=your_api_key_here
 
-5. Initialize the database
-The application will automatically create the SQLite database when first run.
+Initialize the database
+  The application will automatically create the SQLite database when first run.
 
-6. Running the Application
+## Running the Application
 Development mode
-python app.py
-The application will be available at: http://localhost:5000
+  python app.py
+  The application will be available at: http://localhost:5000
