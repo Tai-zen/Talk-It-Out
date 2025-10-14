@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mental Health Resources</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Access Payment</title>
+
+    <!-- ✅ Load Interswitch Payment Library -->
+    <script src="https://newwebpay.qa.interswitchng.com/inline-checkout.js"></script>
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+        }
+
+        button {
+            background-color: #ff9800;
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffa726;
+        }
+    </style>
 </head>
-<style>
-  .resource-grid{
-    display:flex;
-    flex-direction: column;
-  }
-
-  .resources-section{
-    margin: 0 0 auto;
-
-  }
-</style>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">🧠 T I O Mental AI</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="./index.html">Home</a></li>
+    <h1>Get Unlimited Music Access 🎵</h1>
+    <p>Pay a one-time fee of ₦1000 to access all songs forever.</p>
+    <button id="payBtn">Pay ₦1000 Now</button>
 
-      <!-- <li><a href="./game.html">Game</a></li> -->
-      <li><a href="./resources.html">Resources</a></li>
-      <li><a href="./community.html">Community</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-  </nav>
+    <script>
+        // ✅ Callback after payment is complete
+        function paymentCallback(response) {
+            console.log("Payment Response:", response);
 
-  <div class="sidebar" id="sidebar">
-    <span class="close-btn" id="closeBtn">&times;</span>
-    <a href="./index.html">Home</a>  
-    <!-- <a href="./game.html">Game</a> -->
-    <a href="./resources.html">Resources</a>
-    <a href="./community.html">Community</a>
-  </div>
-  <section class="resources-section">
-    <h2>📚 Mental Health Resources</h2>
-    <p>Explore articles, hotlines, and tools to support your mental wellness journey.</p>
+            // Check payment success (status may be SUCCESS, APPROVED, or 00)
+            if (response && (response.status === "SUCCESS" || response.resp === "00")) {
+                // Save payment access in localStorage
+                localStorage.setItem("musicAccessGranted", "true");
+                alert("✅ Payment successful! Redirecting to your music page...");
+                window.location.href = "./sound.html";
+            } else {
+                alert("❌ Payment failed or cancelled. Please try again.");
+            }
+        }
 
-    <div class="resource-grid">
-      <div class="resource-card">
-        <h3>Mindfulness Exercises</h3>
-        <p>Guided practices to help reduce stress, anxiety, and improve focus.</p>
-        <a href="https://www.mindful.org/category/meditation/" target="_blank">Visit Site →</a>
-      </div>
+        // ✅ When Pay Button is Clicked
+        document.getElementById("payBtn").addEventListener("click", function() {
+            // Create a unique transaction reference
+            const txnRef = "txn_" + Date.now();
 
-      <div class="resource-card">
-        <h3>24/7 Crisis Hotline</h3>
-        <p>Talk to someone anytime you need support. You're not alone.</p>
-        <a href="https://988lifeline.org/" target="_blank">Call or Chat →</a>
-      </div>
+            // Create the payment request object
+            const paymentRequest = {
+                merchant_code: "MX6072",      // your merchant code
+                pay_item_id: "9405967",       // your pay item ID
+                txn_ref: txnRef,              // unique reference
+                site_redirect_url: window.location.origin + "./sound.html", // redirect after payment
+                amount: 100000,               // in kobo (₦1000 = 100000 kobo)
+                currency: 566,                // NGN
+                onComplete: paymentCallback,  // callback function
+                mode: 'TEST'                  // use 'LIVE' when going live
+            };
 
-      <div class="resource-card">
-        <h3>Self-Assessment Tools</h3>
-        <p>Explore helpful quizzes to better understand your mental health state.</p>
-        <a href="https://screening.mhanational.org/" target="_blank">Try It →</a>
-      </div>
-
-      <div class="resource-card">
-        <h3>Community Forums</h3>
-        <p>Share experiences and connect with others in a safe, supportive space.</p>
-        <a href="https://www.7cups.com/" target="_blank">Join the Conversation →</a>
-      </div>
-    </div>
-  </section>
-
-
-  <footer class="footer">
-    <div class="footer-logo">T I O</div>
-
-    <nav class="footer-nav">
-      <a href="./into.html">About</a>
-      <a href="./community.html">Community</a>
-      <!-- <a href="./game.html">HealQuest</a> -->
-      <a href="./resources.html">Resources</a>
-    </nav>
-
-    
-
-    <div class="footer-copy">
-      © 2025 T I O MentalAI. All rights reserved.
-    </div>
-  </footer>
+            // ✅ Initialize Interswitch Checkout
+            if (typeof window.webpayCheckout === "function") {
+                window.webpayCheckout(paymentRequest);
+            } else {
+                alert("Payment gateway not loaded. Please check your internet connection.");
+            }
+        });
+    </script>
 
 </body>
-<script src="/static/script2.js"></script>
 </html>
