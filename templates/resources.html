@@ -6,7 +6,7 @@
     <title>Music Access Payment</title>
 
     <!-- ✅ Load Interswitch Payment Library -->
-    <script src="https://newwebpay.qa.interswitchng.com/inline-checkout.js"></script>
+    <script src="https://newwebpay.interswitchng.com/inline-checkout.js"></script>
 
     <style>
         body {
@@ -77,14 +77,14 @@
 
             // Create the payment request object
             const paymentRequest = {
-                merchant_code: "MX6072",      // your merchant code
-                pay_item_id: "9405967",       // your pay item ID
+                merchant_code: "MX153376",      // your merchant code
+                pay_item_id: "7139718",       // your pay item ID
                 txn_ref: txnRef,              // unique reference
                 site_redirect_url: window.location.origin + "./sound.html", // redirect after payment
-                amount: 100000,               // in kobo (₦1000 = 100000 kobo)
+                amount: 5000,               // in kobo (₦1000 = 100000 kobo)
                 currency: 566,                // NGN
                 onComplete: paymentCallback,  // callback function
-                mode: 'TEST'                  // use 'LIVE' when going live
+                mode: 'LIVE'                  // use 'LIVE' when going live
             };
 
             // ✅ Initialize Interswitch Checkout
