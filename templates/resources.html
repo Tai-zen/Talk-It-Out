@@ -51,8 +51,8 @@
 <body>
 
     <h1>Get Unlimited Music Access 🎵</h1>
-    <p>Pay a one-time fee of ₦1000 to access all songs forever.</p>
-    <button id="payBtn">Pay ₦1000 Now</button>
+    <p>Pay a one-time fee of ₦10 to access all songs forever.</p>
+    <button id="payBtn">Pay ₦10 Now</button>
 
     <script>
         // ✅ Callback after payment is complete
@@ -81,7 +81,7 @@
                 pay_item_id: "7139718",       // your pay item ID
                 txn_ref: txnRef,              // unique reference
                 site_redirect_url: window.location.origin + "./sound.html", // redirect after payment
-                amount: 5000,               // in kobo (₦1000 = 100000 kobo)
+                amount: 1000,               // in kobo (₦1000 = 100000 kobo)
                 currency: 566,                // NGN
                 onComplete: paymentCallback,  // callback function
                 mode: 'LIVE'                  // use 'LIVE' when going live
