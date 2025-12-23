@@ -2,7 +2,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
   import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 // Your web app's Firebase configuration
-  import { firebaseConfig } from './config.js';
+  import { firebaseConfig } from '../config.js';
 
 // Now use firebaseConfig.apiKey etc.
     // Initialize Firebase

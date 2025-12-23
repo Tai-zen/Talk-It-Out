@@ -2,7 +2,7 @@
     // 1. IMPORT FIREBASE MODULES
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-    import { firebaseConfig } from './config.js';
+    import { firebaseConfig } from '../config.js';
 
 // Now use firebaseConfig.apiKey etc.
     // Initialize Firebase
