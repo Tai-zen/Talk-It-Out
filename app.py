@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, jsonify, redirect, url_for
+from flask import Flask, render_template, request, session, jsonify, redirect, url_for, send_from_directory
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import sqlite3, requests, json
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -430,6 +430,11 @@ def get_recent_user_facts(user_id, limit=10):
 # ==============================================================================
 # --- APPLICATION ROUTES (REVISED FOR CORRECT REDIRECTS) ---
 # ==============================================================================
+@app.route('/config.js')
+def serve_config():
+    # This tells Flask to look in the main folder (root) for config.js
+    # and send it to the browser when requested.
+    return send_from_directory(os.getcwd(), 'config.js')
 
 @app.route('/')
 def home():
