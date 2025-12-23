@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Sign Up Page - Lilac Theme</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+/* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f7f3ff;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* LEFT SECTION */
+.left {
+  flex: 1;
+  background: #f1e4ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px;
+  position: relative;
+}
+
+.left h1 {
+  padding-top: 30px;
+  font-size: 2.8rem;
+  color: #3b2b59;
+  font-weight: 700;
+  max-width: 350px;
+  line-height: 1.3;
+}
+
+.left .signin-link {
+  margin-top: 20px;
+  color: #3b2b59;
+  font-size: 1rem;
+}
+
+.left .signin-link a {
+  color: #6b4fa7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.left .signin-link a:hover {
+  text-decoration: underline;
+}
+
+.left .image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 30px;
+  padding-left: 0;
+}
+
+/* RIGHT SECTION */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #c7b3ff, #6940b6);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  background:linear-gradient(360deg, #6940b6, #c7b3ff);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.Logo h1 {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 25px;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+}
+
+.input-box input {
+  width: 100%;
+  height: 45px;
+  border: 2px solid #fff;
+  background:linear-gradient(135deg, #c7b3ff, #6940b6);
+  border-radius: 12px;
+  padding: 0 40px 0 15px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: white;
+  outline: none;
+}
+
+.input-box label {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+  padding: 0 5px;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.eye {
+  position: absolute;
+  right: 5px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.terms label{
+  color:black;
+
+}
+
+.terms input{
+  outline: none;
+}
+
+.terms label a{
+  text-decoration: none;
+  color: #3d2a5f;
+}
+
+.terms label a:hover{
+  text-decoration: underline;
+}
+
+
+button {
+  width: 100%;
+  background: #3a2b5a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  height: 45px;
+  margin-top: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6343a8;
+}
+
+.social-section {
+  text-align: center;
+  margin-top: 15px;
+  color: #3b2b59;
+  font-size: 0.9rem;
+}
+
+.social-section p {
+  color: black;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  padding: 6px;
+  background: #ffffff;
+  border: 2px solid #bfa4ff;
+}
+
+.in-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.in-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.in-link a:hover {
+  text-decoration: underline;
+}
+
+.messageDiv {
+  background: transparent;
+  color: white;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: none;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+  }
+  .left {
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+  .left h1 {
+    font-size: 2.2rem;
+    max-width: 100%;
+  }
+  .left .image img {
+    max-width: 300px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  .left {
+    display: none;
+  }
+  .right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-box {
+    max-width: 100%;
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+
+/* Hide left section on tablets and smaller screens */
+@media (max-width: 900px) {
+  .left {
+    display: none;   /* removes the left section */
+  }
+  body {
+    flex-direction: column; /* stack everything vertically */
+  }
+  .right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-box {
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+/* Small phones */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .input-box input {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  button {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  .Logo h1 {
+    font-size: 1.2rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <h1>You're Not Alone. Talk, Play, Heal.</h1>
+    <div class="signin-link">
+      <p>Already a member? <a href="./login.html">Sign in →</a></p>
+    </div>
+    <div class="image">
+      <img src="../static/images/Talk it outt.png" alt="" >
+    </div>
+    
+  </div>
+
+  <section class="right">
+    <div class="login-box">
+      <div class="Logo">
+        <h1><img src="../static/images/icons8-brain-48.png" width="25"> Talk It Out</h1>
+      </div>
+
+      <h2>Sign Up</h2>
+
+      <form id="form">
+        <div id="signUpMessage" class="messageDiv"></div>
+
+        <div class="input-box">
+          <input type="text" id="firstname" required />
+          <label>First Name</label>
+          <span class="icon"><img src="../static/images/person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20"></span>
+        </div>
+
+        <div class="input-box">
+          <input type="text" id="lastname" required />
+          <label>Last Name</label>
+          <span class="icon"><img src="../static/images/person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20"></span>
+        </div>
+
+        <div class="input-box">
+          <input type="email" id="email" required />
+          <label>Email</label>
+          <span class="icon"><img src="../static/images/person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20"></span>
+        </div>
+
+        <div class="input-box">
+          <input type="password" id="password" required />
+          <label>Password</label>
+          <span class="eye" onclick="togglePassword()">
+            <img id="toggleIcon" src="../static/images/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20" alt="Toggle Password">
+          </span>
+        </div>
+
+        <div class="terms" >
+          <label >
+            <input type="checkbox" id="terms" />
+            I agree to the <a href="#" target="_blank">Terms and Conditions</a>
+          </label>
+        </div>
+        
+        
+
+        <button id="submit" type="submit" method="POST" action="/register">Sign Up</button>
+
+        <div class="social-section">
+          <p>or login with</p>
+        </div>
+
+        <div class="social-icons">
+          <a href=""><img src="../static/images/icons8-google-48.png"></a>
+          <a href=""><img src="../static/images/icons8-apple-50.png"></a>
+          
+
+          
+        </div>
+
+        <div class="in-link">
+          <p>Already a member? <a href="./login.html">Sign in →</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module" defer>
+(function() {
+    emailjs.init({
+      publicKey: import.meta.env.YOUR_EMAILJS_PUBLIC_KEY, 
+    });
+})();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+// 2. FIREBASE CONFIGURATION & INITIALIZATION
+    const firebaseConfig = {
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: import.meta.env.VITE_FIREBASE_APP_ID
+    };
+    // 2. Initialize the App
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    // Export them for use in other files
+    export { auth, db };
+// PASSWORD TOGGLE FUNCTION
+  window.togglePassword = function() {
+  const passwordInput = document.getElementById("password");
+  const toggleIcon = document.getElementById("toggleIcon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    // Ensure this path is correct if not using a CDN for the icon
+    toggleIcon.src = "../static/visibility_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"; 
+  } else {
+    passwordInput.type = "password";
+    // Ensure this path is correct if not using a CDN for the icon
+    toggleIcon.src = "../static/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png";
+  }
+}
+    window.togglePassword = togglePassword;
+    // Attach togglePassword to the window object or call it directly via the onclick in HTML
+    // window.togglePassword = togglePassword; 
+
+
+    document.getElementById("form").addEventListener("submit", function (e) {
+      const termsChecked = document.getElementById("terms").checked;
+      // Prevent default submission if terms are not checked
+      if (!termsChecked) {
+        e.preventDefault(); 
+        showMessage("You must agree to the Terms and Conditions.", "signUpMessage");
+      } 
+    });
+// 3. MESSAGE FUNCTION
+function showMessage(message, divId) {
+    const messageDiv = document.getElementById(divId);
+    messageDiv.style.display = "block";
+    messageDiv.innerHTML = message;
+    messageDiv.style.background = "#d9534f"; // Set a background for error/message
+    messageDiv.style.color = "white"; // Ensure text is visible
+    messageDiv.style.opacity = 1;
+
+    setTimeout(() => {
+        messageDiv.style.opacity = 0;
+        messageDiv.style.display = "none";
+    }, 5000);
+}
+const signUp = document.getElementById('submit'); 
+
+signUp.addEventListener('click', async (event) => {
+    event.preventDefault(); 
+
+    const termsChecked = document.getElementById("terms").checked;
+    if (!termsChecked) {
+        showMessage("You must agree to the Terms and Conditions.", "signUpMessage");
+        return;
+    }
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const firstName = document.getElementById('firstname').value.trim(); 
+    const lastName = document.getElementById('lastname').value.trim(); 
+    const username = firstName + lastName; // Creating a username for SQLite
+
+    const submitBtn = document.getElementById('submit');
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Processing...";
+
+    try {
+        // 1. Create user in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        // 2. Save user data to Firestore
+        const docRef = doc(db, "users", user.uid);
+        await setDoc(docRef, {
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            createdAt: new Date()
+        });
+        const flaskResponse = await fetch('/register.html', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        });
+
+const flaskData = await flaskResponse.json();
+        if (flaskData.status !== "success") {
+            throw new Error("Local Database sync failed: " + flaskData.message);
+        }
+
+        // STEP 4: Send Welcome Email via EmailJS
+        const templateParams = {
+            firstName: firstName,
+            email: email,
+            reply_to: 'support@yourwebsite.com'
+        };
+
+        await window.emailjs.send(
+                    import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+                    import.meta.env.VITE_EMAILJS_TEMPLATE_ID_REGISTER, 
+                    templateParams);
+
+        // STEP 5: Success & Redirect
+        showMessage("Registration Successful! Redirecting...", "signUpMessage", false);
+        setTimeout(() => { window.location.href = 'login.html'; }, 2000);
+
+    } catch (error) {
+        console.error("Sign Up Error:", error);
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Sign Up";
+
+        let msg = "An error occurred during registration.";
+        if (error.code === 'auth/email-already-in-use') msg = 'Email already exists!';
+        if (error.code === 'auth/weak-password') msg = 'Password is too weak.';
+        
+        showMessage(error.message || msg, "signUpMessage");
+    }
+});
+</script>
+</body>
+</html>

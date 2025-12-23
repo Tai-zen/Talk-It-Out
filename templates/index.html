@@ -1,232 +1,912 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T I O Mental AI Chatbot</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk It Out - Accessible Mental Wellness</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+     
+
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    color: black;
+    margin: 0;
+    line-height: 1.5;
+    background: none;
+    
+}
+
+/* --- Utility / Accent Styles --- */
+
+
+.section-container {
+    max-width: 1280px; 
+    margin: 0 auto;
+    padding: 0 1rem; 
+}
+
+.text-center-style {
+    text-align: center;
+}
+
+
+
+/* --- 1. Navigation Bar --- */
+.navbar {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: #1f1f1f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style-type: none;
+    }
+
+    .nav-links a {
+      color: #d5d6da;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    
+    .hamburger {
+      font-size: 2rem;
+      display: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+   
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  color: white;
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow:0 0 5px 0 #1f1f1f;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color:#6b4fa7;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Hidden by default */
+  width: 250px;
+  height: 100%;
+  background: black;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #6b4fa7;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide nav links on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger icon */
+  }
+}
+
+
+
+/* --- 2. Hero Section --- */
+.hero-section {
+    padding: 5rem 0; 
+    background-color: #faf0fd; 
+    border-bottom: 8px solid #6b4fa7 ;
+}
+@media (min-width: 640px) { 
+    .hero-section {
+        padding: 8rem 0; 
+    }
+}
+
+.hero-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.hero-tagline {
+    font-size: 1.25rem; 
+    font-weight: 600;
+    color: #6b4fa7;
+    margin-bottom: 0.75rem; 
+}
+
+.hero-title {
+    font-size: 3rem; 
+    font-weight: 800; 
+    margin-bottom: 1.5rem; 
+    line-height: 1.1;
+    color: black
+}
+
+.hero-title span{
+  color:  #6b4fa7;
+}
+@media (min-width: 640px) {
+    .hero-title {
+        font-size: 4.5rem; 
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.25rem; 
+    color: bla;
+    margin-bottom: 2.5rem; 
+    max-width: 56rem; 
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 640px) {
+    .hero-subtitle {
+        font-size: 1.5rem; 
+    }
+}
+
+.primary-cta {
+    font-size: 1.25rem; 
+}
+
+
+
+/* --- CTA Button Base Style --- */
+.cta-button {
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    padding: 1rem 3rem; 
+    border-radius: 0.75rem; 
+    transition: all 0.3s;
+    text-decoration: none;
+    line-height: 1.5;
+}
+.primary-cta {
+    background-color: #6b4fa7;
+    box-shadow: 0 10px 15px -3px rgba(183, 43, 196, 0.3), 0 4px 6px -2px rgba(20, 184, 166, 0.1); 
+}
+.primary-cta:hover {
+    background-color:#796b92; 
+    transform: scale(1.02);
+}
+
+
+/* --- 3. Solutions Section (Feature Cards) --- */
+.section-solutions {
+    padding: 4rem 0; 
+    background-color: white;
+}
+@media (min-width: 640px) {
+    .section-solutions {
+        padding: 6rem 0; 
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem; 
+}
+
+.section-title {
+    font-size: 2.25rem; 
+    font-weight: 800;
+    color: #6b4fa7;
+    margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; 
+}
+@media (min-width: 768px) { 
+    .solutions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.solution-card {
+    background-color:#e7d3e95b; 
+    padding: 2rem; 
+    border-radius: 1rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
+    border-top: 4px solid #6b4fa7;
+    transition: all 0.3s;
+}
+.solution-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+}
+
+.card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #6b4fa7;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 0.75rem;
+}
+
+.card-description {
+    color:grey;
+}
+
+
+/* --- 4. Vision Section --- */
+.section-vision {
+    padding: 4rem 0; 
+    background-color:#eceaf0; 
+}
+@media (min-width: 640px) {
+    .section-vision {
+        padding: 6rem 0; 
+    }
+}
+
+
+
+@media (min-width: 768px) { 
+    .vision-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem; 
+    }
+}
+
+/* General container */
+.vision-text-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+
+/* Paragraph */
+.vision-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #34495e;
+}
+
+/* Highlight spans inside paragraph */
+.highlight {
+  font-weight: bold;
+  color: #6b4fa7;
+}
+
+/* Vision List */
+
+
+
+
+/* Highlighted labels */
+.list-highlight {
+  font-weight: bold;
+  color: #6b4fa7;
+  margin-right: 5px;
+}
+
+/* Supporting text */
+.list-text {
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title-large {
+    font-size: 1.6rem;
+  }
+
+  .vision-paragraph {
+    font-size: 1rem;
+  }
+
+  .vision-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-icon {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title-large {
+    font-size: 1.4rem;
+  }
+
+  .vision-paragraph {
+    font-size: 0.95rem;
+  }
+
+  .list-highlight {
+    font-size: 1rem;
+  }
+
+  .list-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+    .vision-text-content {
+        margin-bottom: 0;
+    }
+}
+
+.section-title-large {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: black;
+    margin-bottom: 1rem;
+}
+@media (min-width: 640px) {
+    .section-title-large {
+        font-size: 3rem; 
+    }
+}
+
+.vision-paragraph {
+    font-size: 1.125rem;
+    color: #4b5563; 
+    margin-bottom: 1.5rem;
+}
+
+.vision-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+    color: #4b5563; 
+}
+
+.vision-list-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1rem;
+}
+.list-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #6b4fa7;
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* Wrapper to center content */
+.vision-image-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Inner container */
+.vision-image-placeholder {
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Image styling */
+.vision-image-text {
+  max-width: 100%;   /* Scale down to fit container */
+  height: auto;      /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: rounded corners */
+  object-fit: contain; /* Prevent distortion */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vision-image-placeholder-wrapper {
+    padding: 15px;
+  }
+
+  .vision-image-text {
+    max-width: 90%;   /* Slight margin on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-image-placeholder-wrapper {
+    padding: 10px;
+  }
+
+  .vision-image-text {
+    max-width: 100%;  /* Full width on mobile */
+  }
+}
+
+
+
+
+/* --- 5. Songs Section --- */
+.section-songs {
+    padding: 4rem 0; 
+    background-color: white;
+}
+@media (min-width: 640px) {
+    .section-songs {
+        padding: 6rem 0; 
+    }
+}
+
+.songs-subtitle {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    color: grey;
+    max-width: 42rem; 
+    margin: 1rem auto 2.5rem; 
+}
+
+.songs-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .songs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.song-card {
+    background-color: #6b4fa71f; 
+    padding: 1.5rem; 
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
+    transition: all 0.3s;
+}
+.song-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 2px solid #6b4fa7; 
+}
+
+.card-icon-small {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto 0.75rem;
+    color: #6b4fa7;
+}
+
+.card-title-small {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.card-text-faded {
+    color: #6b7280; 
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* Custom audio styling */
+.audio-player {
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #6b4fa7;
+    background-color:#6b4fa71f; 
+    border-radius: 0.5rem; 
+    margin-top: 0.75rem;
+}
+
+
+
+
+/* --- 6. Community Section (Call to Action) --- */
+.section-community {
+    padding: 4rem 0; 
+    background-color:   #faf0fd; 
+}
+@media (min-width: 640px) {
+    .section-community {
+        padding: 6rem 0; 
+    }
+}
+
+.community-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color:#6b4fa7 ;
+    margin-bottom: 1rem;
+}
+@media (min-width: 640px) {
+    .community-title {
+        font-size: 3rem; 
+    }
+}
+
+.community-subtitle {
+    font-size: 1.25rem;
+    color: black; 
+    margin-bottom: 2rem;
+    max-width: 48rem; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.secondary-cta {
+    background-color:  #6b4fa7;
+    box-shadow: 0 10px 15px -3px  #6b4fa7, 0 4px 6px -2px rgba(20, 184, 166, 0.1); 
+    padding: 1rem 2.5rem; 
+    font-size: 1.125rem; 
+}
+.secondary-cta:hover {
+    background-color:  #6b4fa7; 
+    border: 1px solid white;
+    transform: scale(1.05);
+}
+
+
+/* --- Footer --- */
+.footer {
+    background-color: black;
+    color:#6b4fa7;
+    padding: 3rem 0; 
+}
+
+.footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-link:hover {
+    color: #6b4fa7; 
+}
+
+.footer-disclaimer {
+    color: rgb(161, 150, 150); 
+    font-size: 0.75rem;
+    margin-top: 1.5rem;
+}
+    </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="logo">🧠 T I O Mental AI</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="./index.html">Home</a></li>
-      <!-- <li><a href="./game.html">Game</a></li> -->
-      <li><a href="./community.html">Community</a></li>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#songs">Sounds</a></li>
+      <li><a href="#community">Community</a></li>
     </ul>
     <div class="hamburger" id="hamburger">&#9776;</div>
   </nav>
 
+  <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <span class="close-btn" id="closeBtn">&times;</span>
-    <a href="./index.html">Home</a>
-    <!-- <a href="./game.html">Game</a> -->
-    <a href="./community.html">Community</a>
+    <a href="#hero">Home</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#vision">Vision</a>
+    <a href="#songs">Sounds</a>
+    <a href="#community">Community</a>
+
   </div>
-    
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>You're Not Alone. Talk, Play, Heal.</h1>
-      <p>Your AI companion for mental wellness — powered by community, conversation, and care.</p>
-      <div class="hero-buttons">
-        <a href="./signup.html" class="hero-btn primary" target="_self">Sign In</a>
-      </div>
-    </div>
-  </section>
+    <main>
+        <header id="hero" class="hero-section">
+            <div class="hero-content">
+                <p class="hero-tagline">CONVERSATIONS THAT HEAL</p>
+                <h1 class="hero-title">
+                    Your Mental Wellness, <span class="text-accent-style">Instant & Private.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Talk It Out AI offers personalized, 24/7 therapeutic support built on clinically validated models. No waiting lists. No judgment. Just clarity.
+                </p>
+                <a href="./register.html" class="cta-button primary-cta" target="_self">
+                    Sign Up
+                </a>
+            </div>
+        </header>
 
+        <section id="solutions" class="section-solutions">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Comprehensive Solutions</h2>
+                    <p class="section-subtitle">A multi-faceted approach to digital mental health support.</p>
+                </div>
 
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"></path></svg>
+                        <h3 class="card-title">AI Mental Health Chatbot</h3>
+                        <p class="card-description">24/7 compassionate conversational support using evidence-based techniques like CBT and mindfulness. Always available when students need help most.</p>
+                    </div>
+                    <div class="solution-card">
+                        <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-6v6m-4-4v4m-2 8h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <h3 class="card-title">Anonymous Community</h3>
+                        <p class="card-description">Safe, moderated peer support network where students connect with others who understand their struggles. Reduces isolation and builds resilience.</p>
+                    </div>
+                    <div class="solution-card">
+                        <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <h3 class="card-title">Therapeutic Content</h3>
+                        <p class="card-description">Access a library of guided audio sessions for sleep, stress, and anxiety, created by certified mindfulness experts.</p>
+                    </div>
+                    <div class="solution-card">
+                      <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                      <h3 class="card-title">Crisis Resources</h3>
+                      <p class="card-description">Immediate access to emergency contacts, hotlines, and professional help when needed most. Seamless escalation to human support when necessary.</p>
+                  </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="vision" class="section-vision">
+            <div class="section-container">
+                <div class="vision-grid">
+                  <div class="vision-text-content">
+                    <h2 class="section-title-large">
+                      Our Vision: Trust, Accessibility, and Impact.
+                    </h2>
+                    <p class="vision-paragraph">
+                      We are building a future where mental health support is as 
+                      <span class="highlight">accessible and immediate</span> as searching the web. 
+                      Our commitment is rooted in two core principles: 
+                      <span class="highlight">absolute confidentiality</span> and 
+                      <span class="highlight">therapeutic efficacy.</span>
+                    </p>
+                    <ul class="vision-list">
+                      <li class="vision-list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v3h8z"></path>
+                        </svg>
+                        <span class="list-highlight">Data Privacy:</span> 
+                        <span class="list-text">Your conversations are fully encrypted and anonymous.</span>
+                      </li>
+                      <li class="vision-list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.477 3-10S13.657 3 12 3m0 18c-1.657 0-3-4.477-3-10S10.343 3 12 3"></path>
+                        </svg>
+                        <span class="list-highlight">Global Access:</span> 
+                        <span class="list-text">Support available across all devices and time zones.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                    <div class="vision-image-placeholder-wrapper">
+                        <div class="vision-image-placeholder">
+                            <img class="vision-image-text" src="../static/images/Talk it outt.png" height="110%"></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
- 
+        <section id="songs" class="section-songs">
+            <div class="section-container text-center-style">
+                <h2 class="section-title">Therapeutic Soundscapes</h2>
+                <p class="songs-subtitle">
+                    Soothe your central nervous system with carefully curated sound environments for focus, sleep, and deep relaxation. *Use the controls below to listen to a sample.*
+                </p>
 
-  <section class="how-it-helps">
-    <h2>How It Helps</h2>
-    <div class="features">
-      
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-brain"></i></div>
-        <h3>Chat with Your AI Companion</h3>
-        <p>Confide in a 24/7 chatbot trained to support your mental health journey with empathy and understanding.</p>
-      </div>
+                <div class="songs-grid">
+                    <div class="song-card">
+                        <svg class="card-icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                        <h3 class="card-title-small">Binaural Focus</h3>
+                        <p class="card-text-faded">Sharpens concentration with alpha/beta wave patterns.</p>
+                        <audio controls class="audio-player">
+                            <source src="../static/bgmusic/2019-04-06_-_Deep_Meditation_-_David_Fesliyan.mp3" type="audio/mpeg">
+                            
+                        </audio>
+                       
+                    </div>
 
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-comments"></i></div>
-        <h3>Join Real Conversations</h3>
-        <p>Connect with people who understand what you're going through in safe, anonymous peer-to-peer chats.</p>
-      </div>
+                    <div class="song-card">
+                        <svg class="card-icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <h3 class="card-title-small">Deep Slumber</h3>
+                        <p class="card-text-faded">Gentle white noise and delta tones for restful sleep.</p>
+                        <audio controls class="audio-player">
+                            <source src="../static/bgmusic/2019-08-03_-_Please_Dont_Cry_-_David_Fesliyan.mp3" type="audio/mpeg">
+                            
+                        </audio>
+                       
+                    </div>
 
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
-        <h3>Play & Heal</h3>
-        <p>Engage with an interactive mental wellness game designed to promote mindfulness and personal growth.</p>
-      </div>
+                    <div class="song-card">
+                        <svg class="card-icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <h3 class="card-title-small">Anxiety Release</h3>
+                        <p class="card-text-faded">Soothing frequencies to immediately reduce stress.</p>
+                        <audio controls class="audio-player">
+                            <source src="../static/bgmusic/2019-04-20_-_Quiet_Time_-_David_Fesliyan.mp3" type="audio/mpeg">
+                           
+                        </audio>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    </div>
-  </section>
+        <section id="community" class="section-community">
+            <div class="section-container text-center-style">
+                <h2 class="community-title">You Are Not Alone.</h2>
+                <p class="community-subtitle">
+                    While the AI offers private support, our moderated community connects you with others on similar wellness journeys.
+                </p>
+                <a href="./register.html" class="cta-button secondary-cta">
+                    Sign Up →
+                </a>
+            </div>
+        </section>
+    </main>
 
-  <section class="demo-section">
-    <h2>Try the AI Companion</h2>
-    <p>Talk to our AI and see how it can support your journey to better mental health.</p>
-
-    <div class="demo-box">
-      <div class="chat-preview">
-        <div class="message bot">Hi there 👋 I'm here to listen. How are you feeling today?</div>
-        <div class="message user">A bit anxious, honestly...</div>
-        <div class="message bot">That's completely okay. Do you want to talk about what's on your mind?</div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="sound-lounge">
-    <h2>🎧 Mental Health Sound Lounge</h2>
-    <p>Explore soothing sounds and curated playlists to help you relax, reflect, and reset.</p>
-
-    <div class="tracks">
-      <div class="track">
-        <h3>Tears Won't Stop</h3>
-        <p>A hauntingly delicate soundtrack echoing raw emotion and quiet heartbreak.</p>
-        <div class="audio-player">
-          <audio controls>
-            <source src="/static/bgmusic/2018-08-21_-_Tears_Wont_Stop_-_David_Fesliyan.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
+    <footer class="footer">
+        <div class="footer-container">
+            <h3 class="footer-brand">Talk It Out AI</h3>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Security & Privacy</a>
+                <a href="#" class="footer-link" >Ethical AI Statement</a>
+                <a href="mailto:kenny.ojo08@gmail.com" class="footer-link">Support</a>
+            </div>
+            <p class="footer-disclaimer">
+                &copy; 2025 Talk It Out AI. All rights reserved. <br>
+                *Disclaimer:* Talk It Out AI is a wellness support tool and does not constitute professional medical or psychological advice.
+            </p>
         </div>
-      </div>
-      
-      <div class="track">
-        <h3>Deep Meditation</h3>
-        <p>A tranquil blend of ambient tones and soft harmonies designed to guide you into deep, peaceful meditation.</p>
-        <div class="audio-player">
-          <audio controls>
-            <source src="/static/bgmusic/2019-04-06_-_Deep_Meditation_-_David_Fesliyan.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-      </div>
+    </footer>
 
-      <div class="track">
-        <h3>Quiet Time</h3>
-        <p>A gentle, ambient soundtrack for peaceful moments and inner calm.</p>
-        <div class="audio-player">
-          <audio controls>
-            <source src="/static/bgmusic/2019-04-20_-_Quiet_Time_-_David_Fesliyan.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-      </div>
-    </div>
-  </section>
+    <script>
+const hamburger = document.getElementById("hamburger");
+const sidebar = document.getElementById("sidebar");
+const closeBtn = document.getElementById("closeBtn");
 
+// Toggle sidebar when hamburger is clicked
+hamburger.addEventListener("click", () => {
+  if (sidebar.style.right === "0px") {
+    sidebar.style.right = "-250px"; // Collapse
+  } else {
+    sidebar.style.right = "0"; // Expand
+  }
+});
 
+// Close sidebar when close button is clicked
+closeBtn.addEventListener("click", () => {
+  sidebar.style.right = "-250px"; // Slide out
+});
 
-  <section class="community-voices">
-    <h2>🗣️ Community Voices</h2>
-    <p>Hear from real users who found comfort, connection, and clarity through our platform.</p>
-
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>"I never thought an AI could make me feel seen and heard. This chatbot became my safe space when I needed it most."</p>
-        <div class="author">
-          <img src="/static/icon2.png" alt="User avatar" >
-          <div class="author-info">
-            <strong>Sophia L.</strong>
-            <span>Student, 21</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial">
-        <p>"The sound lounge is my go-to during anxiety episodes. The soft rain playlist? A lifesaver."</p>
-        <div class="author">
-          <img src="/static/icon2.png" alt="User avatar">
-          <div class="author-info">
-            <strong>James K.</strong>
-            <span>Freelancer, 29</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial">
-        <p>"Being able to chat with others who understand me—even anonymously—was exactly what I needed to feel less alone."</p>
-        <div class="author">
-          <img src="/static/icon2.png" alt="User avatar">
-          <div class="author-info">
-            <strong>Maya T.</strong>
-            <span>Student, 25</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- <section class="game-section">
-    <h2>🎮 The Game: HealQuest / MindMaze</h2>
-    <p>Play your way to wellness. HealQuest is an interactive game that helps you process emotions, build resilience, and gain insight — all while having fun.</p>
-
-    <div class="game-container">
-      <div class="game-preview">
-        <h3>Level Up Your Mind</h3>
-        <p>Navigate through challenges, unlock calm zones, collect healing gems, and complete reflective quests. Every level is a step toward better mental clarity and balance.</p>
-        <button class="game-button">Play Demo</button>
-      </div>
-
-      <div class="game-thumbnail">
-        <img src="/static/ghost-recon-future-soldier-pc.jpg" alt="Game preview">
-      </div>
-    </div>
-  </section> -->
-
-  <section class="resources-section">
-    <h2>📚 Mental Health Resource</h2>
-    <p>Explore articles, hotlines, and tools to support your mental wellness journey.</p>
-
-    <div class="resource-grid">
-      <div class="resource-card">
-        <h3>Mindfulness Exercises</h3>
-        <p>Guided practices to help reduce stress, anxiety, and improve focus.</p>
-        <a href="https://www.mindful.org/category/meditation/" target="_blank">Visit Site →</a>
-      </div>
-
-      <div class="resource-card">
-        <h3>24/7 Crisis Hotline</h3>
-        <p>Talk to someone anytime you need support. You're not alone.</p>
-        <a href="https://988lifeline.org/" target="_blank">Call or Chat →</a>
-      </div>
-      
-      <div class="resource-card">
-        <h3>Self-Assessment Tools</h3>
-        <p>Explore helpful quizzes to better understand your mental health state.</p>
-        <a href="https://screening.mhanational.org/" target="_blank">Try It →</a>
-      </div>
-
-      <div class="resource-card">
-        <h3>Community Forums</h3>
-        <p>Share experiences and connect with others in a safe, supportive space.</p>
-        <a href="./community.html" target="_blank">Join the Conversation →</a>
-      </div>
-    </div>
-  </section>
+// Optional: Close sidebar when clicking outside
+window.addEventListener("click", (e) => {
+  if (e.target !== sidebar && e.target !== hamburger && !sidebar.contains(e.target)) {
+    sidebar.style.right = "-250px";
+  }
+});
 
 
-  <footer class="footer">
-    <div class="footer-logo">🧠 T I O</div>
-
-    <nav class="footer-nav">
-      <a href="./into.html">About</a>
-      <a href="./community.html">Community</a>
-      <!-- <a href="./game.html">HealQuest</a> -->
-    </nav>
-
-    
-
-    <div class="footer-copy">
-      © 2025 T I O MentalAI. All rights reserved.
-    </div>
-  </footer>
+    </script>
 </body>
-<script src="/static/script2.js"></script>
 </html>

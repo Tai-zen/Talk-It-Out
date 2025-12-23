@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Sign Up Page - Lilac Theme</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+/* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f7f3ff;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* LEFT SECTION */
+.left {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px;
+  position: relative;
+}
+
+.left h1 {
+  padding-top: 30px;
+  font-size: 2.8rem;
+  color: #3b2b59;
+  font-weight: 700;
+  max-width: 350px;
+  line-height: 1.3;
+}
+
+.left .signin-link {
+  margin-top: 20px;
+  color: #3b2b59;
+  font-size: 1rem;
+}
+
+.left .signin-link a {
+  color: #6b4fa7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.left .signin-link a:hover {
+  text-decoration: underline;
+}
+
+.left .image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 30px;
+  padding-left: 0;
+}
+
+/* RIGHT SECTION */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #c7b3ff, #6940b6);
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  background:linear-gradient(360deg, #6940b6, #c7b3ff);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.Logo h1 {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 25px;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+}
+
+.input-box input {
+  width: 100%;
+  height: 45px;
+  border: 2px solid #fff;
+  background:linear-gradient(135deg, #c7b3ff, #6940b6);
+  border-radius: 12px;
+  padding: 0 40px 0 15px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: white;
+  outline: none;
+}
+
+.input-box label {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+  padding: 0 5px;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.eye {
+  position: absolute;
+  right: 5px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 5px;
+}
+
+
+
+button {
+  width: 100%;
+  background: #3a2b5a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  height: 45px;
+  margin-top: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6343a8;
+}
+
+.social-section {
+  text-align: center;
+  margin-top: 15px;
+  color: #3b2b59;
+  font-size: 0.9rem;
+}
+
+.social-section p {
+  color: black;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  padding: 6px;
+  background: #ffffff;
+  border: 2px solid #bfa4ff;
+}
+
+.in-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.in-link a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.in-link a:hover {
+  text-decoration: underline;
+}
+
+.messageDiv {
+  background: transparent;
+  color: white;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: none;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+  }
+  .left {
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+  .left h1 {
+    font-size: 2.2rem;
+    max-width: 100%;
+  }
+  .left .image img {
+    max-width: 300px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  .left {
+    display: none;
+  }
+  .right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-box {
+    max-width: 100%;
+    padding: 20px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+
+/* Hide left section on tablets and smaller screens */
+@media (max-width: 900px) {
+  .left {
+    display: none;   /* removes the left section */
+  }
+  body {
+    flex-direction: column; /* stack everything vertically */
+  }
+  .right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-box {
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+/* Small phones */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .input-box input {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  button {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  .Logo h1 {
+    font-size: 1.2rem;
+  }
+
+  
+}
+
+.reset a{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-end;
+    width: 100%;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+
+  }
+
+  .reset a:hover{
+    text-decoration: underline;
+    
+  }
+
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <h1>You're Not Alone. Talk, Play, Heal.</h1>
+    <div class="signin-link">
+      <p>Not a member? <a href="./register.html">Sign Up →</a></p>
+    </div>
+    <div class="image">
+      <img src="../static/images/Talk it outt.png" alt="" >
+    </div>
+    
+  </div>
+
+  <section class="right">
+    <div class="login-box">
+      <div class="Logo">
+        <h1><img src="../static/images/icons8-brain-48.png" width="25"> Talk It Out</h1>
+      </div>
+
+      <h2>Login</h2>
+
+      <form id="form">
+        <div id="signUpMessage" class="messageDiv"></div>
+
+
+        <div class="input-box">
+          <input type="email" id="email" required />
+          <label>Email</label>
+          <span class="icon"><img src="../static/images/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20"></span>
+        </div>
+
+        <div class="input-box">
+          <input type="password" id="password" required />
+          <label>Password</label>
+          <span class="eye" onclick="togglePassword()">
+            <img id="toggleIcon" src="../static/images/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="20" alt="Toggle Password">
+          </span>
+        </div>
+        
+
+        <button id="submit" type="submit">Login</button>
+        <div class="reset">
+          <a href="./password.html">Forgot password?</a>
+        </div>
+
+        <div class="social-section">
+          <p>or login with</p>
+        </div>
+
+        <div class="social-icons">
+          <a href=""><img src="../static/images/icons8-google-48.png"></a>
+          <a href=""><img src="../static/images/icons8-apple-50.png"></a>
+          
+
+          
+        </div>
+
+        <div class="in-link">
+          <p>Not a member? <a href="./register.html">Sign Up →</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script type="module" defer>
+ 
+    // 1. IMPORT FIREBASE MODULES
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+    
+    const firebaseConfig = {
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: import.meta.env.VITE_FIREBASE_APP_ID
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    export { app, auth };
+    
+    
+    // 3. MESSAGE FUNCTION
+    // This function handles showing temporary messages to the user.
+    // It assumes your login page has an element with the ID that is passed as divId
+    function showMessage(message, divId) {
+     const messageDiv = document.getElementById(divId);
+     // Ensure the div exists before trying to modify it
+     if (!messageDiv) return;
+    
+     messageDiv.style.display = "block";
+     messageDiv.innerHTML = message;
+     
+     // Use a different color for success or just keep error styling for failed attempts
+     if (message.includes("Success")) {
+    messageDiv.style.background = "#5cb85c"; // Green for success
+     } else {
+    messageDiv.style.background = "#d9534f"; // Red for error
+     }
+     
+     messageDiv.style.color = "white";
+     messageDiv.style.opacity = 1;
+    
+     setTimeout(() => {
+     // Add a slight transition for the fade-out effect (assuming you have one in your CSS or rely on default)
+     messageDiv.style.opacity = 0; 
+     
+     // Wait for the transition to finish before setting display: none
+     setTimeout(() => {
+    messageDiv.style.display = "none";
+    // Reset background color for next message (optional)
+    messageDiv.style.background = "transparent";
+     }, 500); // 500ms transition fade time
+    
+     }, 5000);
+    }
+    
+    // Function to toggle password visibility (for convenience, assuming similar HTML)
+    function togglePassword() {
+     const passwordInput = document.getElementById("password");
+     const toggleIcon = document.getElementById("toggleIcon");
+     
+     if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    // Update to your correct icon paths - assuming visibility_24dp is the open eye
+    toggleIcon.src = "../static/images/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png"; 
+     } else {
+    passwordInput.type = "password";
+    // Update to your correct icon paths - assuming visibility_off_24dp is the closed eye
+    toggleIcon.src = "../static/images/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png";
+     }
+    }
+    window.togglePassword = togglePassword; // Expose to global scope for HTML onclick
+    
+    // 4. LOGIN EVENT LISTENER
+    const loginButton = document.getElementById('submit'); // Assuming the login button ID is 'submit'
+    // *** FIX: Changed to match the HTML div ID 'signUpMessage' ***
+    const messageDivId = 'signUpMessage'; 
+    
+loginButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) {
+        showMessage("Please enter both email and password.", messageDivId);
+        return;
+    }
+
+    try {
+        // Step 1: Client-side Firebase Check
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("Firebase Auth Success");
+
+        // Step 2: Server-side Flask Session Bridge
+        // ... inside your fetch(...).then block
+const response = await fetch('/login.html', { // Ensure no trailing slash here
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `username=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+});
+
+const data = await response.json(); // Read the JSON from Flask
+
+if (data.status === "success") {
+    showMessage("Login Successful! Redirecting...", messageDivId);
+    setTimeout(() => {
+        window.location.href = data.redirect; // This moves the browser to /chat
+    }, 1000);
+} else {
+    showMessage(data.message || "Login failed", messageDivId);
+}
+
+    } catch (error) {
+        console.error("Login Error:", error);
+        showMessage("Invalid credentials or connection error.", messageDivId);
+    }
+});
+    
+    </script>
+</body>
+</html>
